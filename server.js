@@ -26,22 +26,81 @@ var serial = new serialport.SerialPort(process.argv[2], {
 io.on('connect', function(socket) {
     console.log('a user connected');
 
-    // if you get the 'ledON' msg, send an 'H' to the arduino
-    socket.on('ledON', function() {
-        console.log('ledON');
-        serial.write('H');
+
+
+// LOOKING AROUND
+    socket.on('look1', function() {
+        console.log('look1');
+        serial.write('1');
     });
 
-    // if you get the 'ledOFF' msg, send an 'H' to the arduino
-    socket.on('ledOFF', function() {
-        console.log('ledOFF');
+    socket.on('look2', function() {
+        console.log('look2');
+        serial.write('2');
+    });
+
+    socket.on('look3', function() {
+        console.log('look3');
+        serial.write('3');
+    });
+
+
+// TILTING
+    socket.on('forward', function() {
+        console.log('forward');
+        serial.write('M');
+    });
+
+    socket.on('upright', function() {
+        console.log('upright');
+        serial.write('N');
+    });
+
+    socket.on('backward', function() {
+        console.log('backward');
+        serial.write('B');
+    });
+
+
+//WIGGLE
+    socket.on('wiggle', function() {
+        console.log('wiggle');
+        serial.write('W');
+    });
+
+// LOOKAROUND
+    socket.on('lookaround', function() {
+        console.log('lookaround');
         serial.write('L');
     });
+
+// SWOOP (To be built out, currently just one not properly working function)
+    socket.on('swoopA', function() {
+        console.log('swoopA');
+        serial.write('A');
+    });
+
+
+//STOP AND RESET
+    socket.on('stop', function() {
+        console.log('stop');
+        serial.write(' ');
+    });
+
+    socket.on('reset', function() {
+        console.log('reset');
+        serial.write('R');
+    });
+
+
 
     // if you get the 'disconnect' message, say the user disconnected
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
+
+
+
 });
 
 // this is the serial port event handler.
