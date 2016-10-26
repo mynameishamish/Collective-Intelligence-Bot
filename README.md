@@ -35,6 +35,7 @@ R               : Reset, move everything back to 0
 To run this example:
 
 1. clone the repo
+2. make sure you run `npm install` to install needed node modules
 2. upload the `helloYouSketch.ino` to your Arduino
 3. run `node server.js /dev/ttyACM0` using node (make sure your Arduino port is correct)
 
